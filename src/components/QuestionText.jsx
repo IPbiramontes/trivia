@@ -7,7 +7,7 @@ class QuestionText extends Component {
   render() {
     return (
       <div>
-        Here is QuestionText
+        {this.props.question_text}
       </div>
     );
   }
