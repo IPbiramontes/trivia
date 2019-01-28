@@ -6,13 +6,15 @@ import ResetButton from "./ResetButton.jsx";
 
 class Question extends Component {
   render() {
+    var answerButtons = [];
+    for (var i = 0; i < this.props.theAnswers.length; i++) {
+      var answer_text = this.props.theAnswers[i];
+      answerButtons.push(<AnswerButton answer_choice={answer_text} />);
+    }
     return (
       <div>
-        <QuestionText question_text="this is question text" />
-        <AnswerButton answer_choice="a" />
-        <AnswerButton answer_choice="b" />
-        <AnswerButton answer_choice="c" />
-        <AnswerButton answer_choice="d" />
+        <QuestionText question_text={this.props.firebase_question_text} />
+        {answerButtons}
         <ResetButton />
       </div>
     );
