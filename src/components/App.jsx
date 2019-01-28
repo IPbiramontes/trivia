@@ -7,7 +7,9 @@ class App extends Component {
     var setOfAnswers = ["2", "8", "50", "21"];
     return (
       <div className="app">
-        Trivia!
+        <header id="trivia_header">
+          <h1> Trivia!</h1>
+        </header>
         <Question firebase_question_text="why?" theAnswers={setOfAnswers} />
       </div>
     );
