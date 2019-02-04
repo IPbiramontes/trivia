@@ -3,8 +3,6 @@ import "../css/App.css";
 import Question from "./Question.jsx";
 import { buildFirebase } from "../clients/firebase";
 
-var firebaseDatabase = buildFirebase();
-
 // Data from firebase:
 //
 // < question - id >
@@ -27,6 +25,16 @@ class App extends Component {
         correct_choice_index: 2
       }
     };
+
+    var firebaseDatabase = buildFirebase();
+    var ref = firebaseDatabase.ref("/questions");
+    ref.once("value", snap => {
+      var values = snap.val();
+      var question = values["-LVeVht9HNIq6260pvtl"];
+      this.setState({ current_question: question });
+      console.log(values);
+      console.log(question);
+    });
   }
 
   render() {

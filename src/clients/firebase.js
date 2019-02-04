@@ -14,7 +14,7 @@ export function buildFirebase() {
   } else {
     app = firebase.apps[0];
   }
-  return firebase.database(app);
+  return app.database();
 }
 
 export function getRandomQuestion(questions) {
