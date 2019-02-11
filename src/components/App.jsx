@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../css/App.css";
 import Question from "./Question.jsx";
-import { buildFirebase } from "../clients/firebase";
+import { buildFirebase, getRandomQuestion } from "../clients/firebase";
 
 // Data from firebase:
 //
@@ -30,13 +30,19 @@ class App extends Component {
     var ref = firebaseDatabase.ref("/questions");
     ref.once("value", snap => {
       var values = snap.val();
-      var question = values["-LVeVht9HNIq6260pvtl"];
+      var question = getRandomQuestion(values);
       this.setState({ current_question: question });
       console.log(values);
       console.log(question);
     });
   }
-
+  handleClick(buttonIndex) {
+    if (buttonIndex === this.state.current_question.correct_choice_index) {
+      alert("Bingo");
+    } else {
+      alert("You are wrong");
+    }
+  }
   render() {
     return (
       <div className="app">
@@ -44,6 +50,7 @@ class App extends Component {
           <h1> Trivia!</h1>
         </header>
         <Question
+          handleClick={buttonIndex => this.handleClick(buttonIndex)}
           firebase_question_text={this.state.current_question.question_text}
           theAnswers={this.state.current_question.choices}
         />

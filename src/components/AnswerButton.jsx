@@ -5,7 +5,9 @@ class AnswerButton extends Component {
   render() {
     return (
       <div>
-        <button id="AnswerButton">{this.props.answer_choice}</button>
+        <button onClick={() => this.props.handleClick()} id="AnswerButton">
+          {this.props.answer_choice}
+        </button>
       </div>
     );
   }

@@ -7,9 +7,14 @@ import ResetButton from "./ResetButton.jsx";
 class Question extends Component {
   render() {
     var answerButtons = [];
-    for (var i = 0; i < this.props.theAnswers.length; i++) {
-      var answer_text = this.props.theAnswers[i];
-      answerButtons.push(<AnswerButton answer_choice={answer_text} />);
+    for (let i = 0; i < this.props.theAnswers.length; i++) {
+      let answer_text = this.props.theAnswers[i];
+      answerButtons.push(
+        <AnswerButton
+          handleClick={() => this.props.handleClick(i)}
+          answer_choice={answer_text}
+        />
+      );
     }
     return (
       <div>
