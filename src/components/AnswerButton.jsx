@@ -5,7 +5,11 @@ class AnswerButton extends Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.props.handleClick()} id="AnswerButton">
+        <button
+          style={{ marginLeft: "70%" }}
+          onClick={() => this.props.handleClick()}
+          id="AnswerButton"
+        >
           {this.props.answer_choice}
         </button>
       </div>
@@ -14,3 +18,5 @@ class AnswerButton extends Component {
 }
 
 export default AnswerButton;
+
+//Math.floor(Math.random()*100)
