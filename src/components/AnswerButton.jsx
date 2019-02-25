@@ -3,10 +3,11 @@ import React, { Component } from "react";
 
 class AnswerButton extends Component {
   render() {
+    var margin = Math.floor(Math.random() * 80 * 2) - 80 + "%";
     return (
       <div>
         <button
-          style={{ marginLeft: "70%" }}
+          style={{ marginLeft: margin }}
           onClick={() => this.props.handleClick()}
           id="AnswerButton"
         >
@@ -18,5 +19,3 @@ class AnswerButton extends Component {
 }
 
 export default AnswerButton;
-
-//Math.floor(Math.random()*100)
