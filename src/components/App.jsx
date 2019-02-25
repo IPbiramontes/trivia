@@ -17,12 +17,12 @@ import { buildFirebase, getRandomQuestion } from "../clients/firebase";
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       current_question: {
         question_text: "How many states are in the US?",
         choices: ["6", "8", "50", "21"],
-        correct_choice_index: 2
+        correct_choice_index: 2,
+        result: " ur rite"
       }
     };
 
@@ -38,9 +38,13 @@ class App extends Component {
   }
   handleClick(buttonIndex) {
     if (buttonIndex === this.state.current_question.correct_choice_index) {
-      alert("Bingo");
+      this.setState({
+        result: "Bingo"
+      });
     } else {
-      alert("You are wrong");
+      this.setState({
+        result: "Wrong"
+      });
     }
   }
   render() {
@@ -54,6 +58,7 @@ class App extends Component {
           firebase_question_text={this.state.current_question.question_text}
           theAnswers={this.state.current_question.choices}
         />
+        <div id="answer">{this.state.result}</div>
       </div>
     );
   }
