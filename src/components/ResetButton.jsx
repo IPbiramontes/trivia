@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import components
 
-
 class ResetButton extends Component {
-  
   render() {
     return (
       <div>
-        <button id="ResetButton">Reset me!</button>
+        <button onClick={() => this.props.handleClick()} id="ResetButton">
+          Next Question
+        </button>
       </div>
     );
   }

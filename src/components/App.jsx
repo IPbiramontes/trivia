@@ -26,16 +26,22 @@ class App extends Component {
       }
     };
 
+    this.handleReset();
+  }
+
+  handleReset() {
     var firebaseDatabase = buildFirebase();
     var ref = firebaseDatabase.ref("/questions");
     ref.once("value", snap => {
       var values = snap.val();
       var question = getRandomQuestion(values);
-      this.setState({ current_question: question });
-      console.log(values);
-      console.log(question);
+      this.setState({
+        current_question: question,
+        result: ""
+      });
     });
   }
+
   handleClick(buttonIndex) {
     if (buttonIndex === this.state.current_question.correct_choice_index) {
       this.setState({
@@ -57,6 +63,7 @@ class App extends Component {
           handleClick={buttonIndex => this.handleClick(buttonIndex)}
           firebase_question_text={this.state.current_question.question_text}
           theAnswers={this.state.current_question.choices}
+          handleReset={() => this.handleReset()}
         />
         <div id="answer">{this.state.result}</div>
       </div>

@@ -20,7 +20,7 @@ class Question extends Component {
       <div>
         <QuestionText question_text={this.props.firebase_question_text} />
         {answerButtons}
-        <ResetButton />
+        <ResetButton handleClick={() => this.props.handleReset()} />
       </div>
     );
   }
